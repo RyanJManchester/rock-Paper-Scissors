@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
-    <title>Document</title>
+    <title>Rock Paper Scissors game</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body id='body'>
-    <div id="choices">
-      <img onclick="play('Rock');" src="/images/rock.png"/>
-      <img onclick="play('Paper');" src="/images/paper.jpeg"/>
+    <header>
+      <h1> Rock Paper Scissors</h1>
+    </header>
+    <div class="choice-div">
+      <div class = "choices">
+        <img onclick="play('Rock');" src="/images/rock.png"/>
+      </div>
+      <div class="choices">
+        <img onclick="play('Paper');" src="/images/paper.jpeg"/>
+      </div>
+      <div class="choices">
       <img onclick="play('Scissors');" src="/images/scissors.jpg"/>
+    </div>
      </div>
      <button id="reset">reset</button>
     </div>

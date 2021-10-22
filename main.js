@@ -1,38 +1,34 @@
+const body = document.body;
 let playerTally = 0; let computerTally = 0;
 const paragraph = document.createElement('div');
-let tally = document.createElement('div');
 
+let tally = document.createElement('div');
+let tied;
 const resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click', function (e) {
     resetFunct();
 })
 
-
-const body = document.body;
 body.onload = resetFunct();
 tally.textContent = `player: ${playerTally} | computer: ${computerTally}`;
-const reset = document.getElementById("reset");
-reset.onclick = resetFunct();
-
-body.appendChild(tally);
 
 function resetFunct() {
     computerTally = 0, 
     playerTally = 0,
     tied = 0;
     body.removeChild(tally);
-    body.removeChild(paragraph);
     paragraph.textContent = "Play a game to see your score!";
+    paragraph.style.color = 'black';
     body.insertBefore(paragraph, resetBtn);
 }
 
 function play(pl) {
     let string;
-    let tied = 0;
     let com = computerSelection();
     if (pl == com) {
         string = "It's a tie! Nobody wins.";
-        tied++;
+        ++tied;
+        paragraph.style.color = 'black'
     } else if ( // Only scenarios where player wins
         (pl == "Rock" && com == "Scissors") ||
         (pl == "Paper" && com == "Rock") ||
@@ -40,22 +36,18 @@ function play(pl) {
         {
     string = `You win! ${pl} beats ${com}. `;
         ++playerTally;
+        paragraph.style.color = 'green';
     } else {
         string = `You lose! ${pl} is beaten by ${com}. `;
         ++computerTally;
+        paragraph.style.color = 'red';
     }
-    console.log(string);
     paragraph.textContent = string;
     tally.textContent = ` You: ${playerTally}
     | Tied: ${tied} | Computer: ${computerTally}`;
     body.insertBefore(paragraph, resetBtn);
     body.appendChild(tally);
 }
-
-
-
-
-
 
 function computerSelection() {
     let random = Math.floor((Math.random() * 3));
